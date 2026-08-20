@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: kvs-hospital-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: kvs-hospital-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://replace-with-your-render-static-site.onrender.com
+  - type: web
+    name: kvs-hospital-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://replace-with-your-render-api.onrender.com/api
+databases:
+  - name: kvs-hospital-db
+    plan: free
+    databaseName: kvs_hospital
+    user: kvs_hospital
