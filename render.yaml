@@ -2,6 +2,7 @@ services:
   - type: web
     name: kvs-hospital-api
     runtime: node
+    plan: free
     rootDir: backend
     buildCommand: npm install
     startCommand: node server.js
@@ -18,6 +19,7 @@ services:
   - type: web
     name: kvs-hospital-web
     runtime: static
+    plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
