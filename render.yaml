@@ -15,7 +15,7 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: FRONTEND_URL
-        value: https://replace-with-your-render-static-site.onrender.com
+        value: https://kvs-hospital-web.onrender.com
   - type: web
     name: kvs-hospital-web
     runtime: static
@@ -24,7 +24,7 @@ services:
     staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
-        value: https://replace-with-your-render-api.onrender.com/api
+        value: https://kvs-hospital-api.onrender.com/api
 databases:
   - name: kvs-hospital-db
     plan: free
